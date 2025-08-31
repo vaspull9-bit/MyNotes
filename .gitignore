@@ -1,3 +1,9 @@
+# Windows
+Thumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Android Studio
 *.iml
 .gradle
 /local.properties
@@ -12,4 +18,30 @@
 /captures
 .externalNativeBuild
 .cxx
+
+# Keystore files
+*.jks
+*.keystore
+
+# Logs
+*.log
+
+# Build outputs
+/app/build
+/build
+
+# Local configuration file
 local.properties
+
+# Windows shortcut files
+*.lnk
+
+# Temporary files
+*.tmp
+*.temp
+
+# VS Code
+.vscode/
+
+# IntelliJ
+out/

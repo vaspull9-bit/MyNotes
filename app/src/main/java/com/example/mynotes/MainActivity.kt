@@ -12,12 +12,61 @@ import com.example.mynotes.adapter.NotesAdapter
 import com.example.mynotes.data.NotesDatabase
 import com.example.mynotes.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
-
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
+import androidx.core.content.ContextCompat
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var notesAdapter: NotesAdapter
     private val database by lazy { NotesDatabase.getInstance(this) }
+
+    // Добавляем в начало класса
+    private val PERMISSION_REQUEST_CODE = 123
+
+    // Добавляем метод проверки разрешений
+    private fun checkPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val permissions = arrayOf(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+
+            if (permissions.any { ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED }) {
+                requestPermissions(permissions, PERMISSION_REQUEST_CODE)
+            }
+        }
+    }
+
+    // Добавляем обработчик результата запроса разрешений
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
+                Toast.makeText(this, "Разрешения получены", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Некоторые разрешения не получены", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    // Вызываем проверку разрешений в onCreate()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        checkPermissions() // Добавляем эту строку
+        setupToolbar()
+        setupRecyclerView()
+        setupFab()
+        loadNotes()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,4 +158,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         loadNotes()
     }
+
+
+
 }
