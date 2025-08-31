@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_save"
+        android:title="Сохранить"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_export"
+        android:title="Экспорт"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_format_bold"
+        android:title="Жирный"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_format_italic"
+        android:title="Курсив"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_format_underline"
+        android:title="Подчеркнутый"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_format_strike"
+        android:title="Зачеркнутый"
+        app:showAsAction="never" />
+
+</menu>

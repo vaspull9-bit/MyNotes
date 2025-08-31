@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MyNotes</string>
+    <string name="menu_about">О компании</string>
+    <string name="menu_save">Сохранить</string>
+    <string name="menu_export">Экспорт</string>
+    <string name="menu_format_bold">Жирный</string>
+    <string name="menu_format_italic">Курсив</string>
+    <string name="menu_format_underline">Подчеркнутый</string>
+    <string name="menu_format_strike">Зачеркнутый</string>
+</resources>
